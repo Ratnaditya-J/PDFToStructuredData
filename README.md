@@ -38,13 +38,124 @@ python pdf_extractor.py --pdf document.pdf --template custom --config my_config.
 python pdf_extractor.py --folder ./documents/ --template research_paper --output results.json
 ```
 
-## Built-in Templates
+## 📋 Built-in Templates
 
-- **invoice**: Extract vendor, amount, date, line items, tax information
-- **resume**: Extract name, skills, experience, education, contact details
-- **research_paper**: Extract title, authors, abstract, methodology, findings
-- **medical_report**: Extract patient info, diagnosis, medications, recommendations
-- **contract**: Extract parties, terms, dates, obligations, signatures
+PDFToStructuredData comes with **10 pre-built templates** for common document types. Each template is optimized for specific document structures and extraction patterns.
+
+### 🧾 **Business & Financial Documents**
+
+#### `invoice`
+**Extract from business invoices and bills**
+- Vendor/supplier information
+- Invoice number and date
+- Line items with descriptions and amounts
+- Subtotal, tax, and total amounts
+- Payment terms and due dates
+
+#### `receipt`
+**Extract from retail receipts and purchase records**
+- Store name and location
+- Transaction date and time
+- Itemized purchases with prices
+- Tax amounts and payment method
+- Receipt/transaction number
+
+#### `bank_statement`
+**Extract from bank and financial statements**
+- Account holder information
+- Account numbers and statement period
+- Transaction history with dates and amounts
+- Beginning and ending balances
+- Fees and charges
+
+#### `contract`
+**Extract from legal contracts and agreements**
+- Contracting parties and their roles
+- Contract terms and conditions
+- Important dates (start, end, renewal)
+- Financial obligations and amounts
+- Termination clauses and governing law
+
+### 🏥 **Healthcare Documents**
+
+#### `medical_report`
+**Extract from medical reports and patient records**
+- Patient demographics and contact info
+- Diagnosis codes and descriptions
+- Prescribed medications and dosages
+- Vital signs and test results
+- Treatment plans and recommendations
+
+### 🎓 **Academic & Research Documents**
+
+#### `academic_paper`
+**Extract from academic papers and research publications**
+- Paper metadata (title, journal, DOI)
+- Author information and affiliations
+- Abstract and keywords
+- Methodology and research approach
+- Key findings and conclusions
+- Citation count and references
+
+#### `research_paper`
+**Extract from general research documents**
+- Title and authors
+- Abstract and summary
+- Methodology section
+- Results and findings
+- Conclusions and future work
+
+### 💼 **Professional Documents**
+
+#### `resume`
+**Extract from resumes and CVs**
+- Personal information and contact details
+- Professional summary/objective
+- Work experience with dates and descriptions
+- Education and certifications
+- Skills and competencies
+
+#### `business_card`
+**Extract from business cards and contact info**
+- Full name and job title
+- Company name and department
+- Phone numbers (office, mobile, fax)
+- Email addresses and websites
+- Physical address and social media
+
+### 📊 **Tax & Government Documents**
+
+#### `tax_document`
+**Extract from tax forms (W-2, 1099, tax returns)**
+- Taxpayer identification and personal info
+- Income sources and amounts
+- Tax withholdings and payments
+- Deductions and credits
+- Tax liability and refund amounts
+
+---
+
+### 🚀 **Using Templates**
+
+```bash
+# List all available templates
+python pdf_extractor.py list-templates
+
+# Use a specific template
+python pdf_extractor.py extract invoice.pdf --template invoice
+python pdf_extractor.py extract medical_report.pdf --template medical_report
+
+# Batch process with templates
+python pdf_extractor.py batch ./receipts/ --template receipt
+```
+
+### 🎯 **Template Accuracy**
+
+Each template is designed with:
+- **Specific prompts** optimized for document type
+- **Example extractions** to guide the AI model
+- **Field validation** for data quality
+- **Confidence scoring** for extraction reliability
 
 ## Custom Templates
 
