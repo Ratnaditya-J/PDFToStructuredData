@@ -1,0 +1,114 @@
+{
+  "name": "business_card",
+  "description": "Extract contact information from business cards including names, titles, company details, phone numbers, emails, and addresses",
+  "prompt": "Extract business card information including full name, job title, company name, phone numbers, email addresses, physical addresses, websites, and social media handles. Focus on contact details and professional information.",
+  "examples": [
+    {
+      "text": "SARAH JOHNSON\nSenior Marketing Manager\n\nTECH INNOVATIONS INC.\n123 Innovation Drive, Suite 200\nSilicon Valley, CA 94025\n\nPhone: (555) 123-4567\nMobile: (555) 987-6543\nEmail: sarah.johnson@techinnovations.com\nWebsite: www.techinnovations.com\nLinkedIn: linkedin.com/in/sarahjohnson\n\n\"Driving Digital Transformation\"\n\nFounded 2010 | ISO 9001 Certified",
+      "extractions": [
+        {
+          "extraction_class": "full_name",
+          "extraction_text": "SARAH JOHNSON",
+          "attributes": {
+            "first_name": "Sarah",
+            "last_name": "Johnson"
+          }
+        },
+        {
+          "extraction_class": "job_title",
+          "extraction_text": "Senior Marketing Manager",
+          "attributes": {
+            "department": "marketing",
+            "level": "senior"
+          }
+        },
+        {
+          "extraction_class": "company_name",
+          "extraction_text": "TECH INNOVATIONS INC.",
+          "attributes": {
+            "type": "corporation",
+            "industry": "technology"
+          }
+        },
+        {
+          "extraction_class": "office_phone",
+          "extraction_text": "(555) 123-4567",
+          "attributes": {
+            "type": "office",
+            "format": "US"
+          }
+        },
+        {
+          "extraction_class": "mobile_phone",
+          "extraction_text": "(555) 987-6543",
+          "attributes": {
+            "type": "mobile",
+            "format": "US"
+          }
+        },
+        {
+          "extraction_class": "email",
+          "extraction_text": "sarah.johnson@techinnovations.com",
+          "attributes": {
+            "type": "business",
+            "domain": "techinnovations.com"
+          }
+        },
+        {
+          "extraction_class": "physical_address",
+          "extraction_text": "123 Innovation Drive, Suite 200, Silicon Valley, CA 94025",
+          "attributes": {
+            "street": "123 Innovation Drive",
+            "suite": "Suite 200",
+            "city": "Silicon Valley",
+            "state": "CA",
+            "zip": "94025"
+          }
+        },
+        {
+          "extraction_class": "website",
+          "extraction_text": "www.techinnovations.com",
+          "attributes": {
+            "type": "company_website"
+          }
+        },
+        {
+          "extraction_class": "social_media",
+          "extraction_text": "linkedin.com/in/sarahjohnson",
+          "attributes": {
+            "platform": "LinkedIn",
+            "type": "professional"
+          }
+        },
+        {
+          "extraction_class": "company_tagline",
+          "extraction_text": "Driving Digital Transformation",
+          "attributes": {
+            "type": "slogan"
+          }
+        },
+        {
+          "extraction_class": "company_info",
+          "extraction_text": "Founded 2010",
+          "attributes": {
+            "type": "founding_year",
+            "year": "2010"
+          }
+        },
+        {
+          "extraction_class": "certification",
+          "extraction_text": "ISO 9001 Certified",
+          "attributes": {
+            "type": "quality_certification",
+            "standard": "ISO 9001"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 1,
+    "max_workers": 6,
+    "max_char_buffer": 800
+  }
+}

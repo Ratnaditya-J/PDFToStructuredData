@@ -1,0 +1,109 @@
+{
+  "name": "contract",
+  "description": "Extract key information from legal contracts and agreements including parties, terms, dates, obligations, and financial details",
+  "prompt": "Extract contract information including contracting parties, contract type, effective dates, key terms and obligations, financial amounts, termination clauses, and governing law. Focus on legally significant elements and preserve exact contractual language.",
+  "examples": [
+    {
+      "text": "SERVICE AGREEMENT\n\nContract No: SA-2024-0315\nEffective Date: March 15, 2024\nExpiration Date: March 14, 2025\n\nPARTIES:\nClient: Acme Corporation\n123 Business Street\nBusiness City, BC 12345\nTax ID: 12-3456789\n\nService Provider: TechConsult LLC\n456 Service Avenue\nConsult Town, CT 67890\nTax ID: 98-7654321\n\nSERVICES:\nProvider agrees to deliver IT consulting services including system analysis, software recommendations, and implementation support.\n\nCOMPENSATION:\nMonthly Fee: $5,000\nSetup Fee: $2,500 (one-time)\nTotal Contract Value: $62,500\n\nTERMS:\n- Payment due within 30 days of invoice\n- Either party may terminate with 60 days written notice\n- Confidentiality obligations survive termination\n- Governing Law: State of California\n\nSIGNATURES:\nClient Representative: John Smith, CEO\nDate: March 15, 2024\n\nProvider Representative: Jane Doe, Managing Partner\nDate: March 15, 2024",
+      "extractions": [
+        {
+          "extraction_class": "contract_number",
+          "extraction_text": "SA-2024-0315",
+          "attributes": {
+            "format": "service_agreement_year_date"
+          }
+        },
+        {
+          "extraction_class": "contract_type",
+          "extraction_text": "SERVICE AGREEMENT",
+          "attributes": {
+            "category": "professional_services"
+          }
+        },
+        {
+          "extraction_class": "effective_date",
+          "extraction_text": "March 15, 2024",
+          "attributes": {
+            "format": "full_date"
+          }
+        },
+        {
+          "extraction_class": "expiration_date",
+          "extraction_text": "March 14, 2025",
+          "attributes": {
+            "format": "full_date",
+            "duration": "1 year"
+          }
+        },
+        {
+          "extraction_class": "client_party",
+          "extraction_text": "Acme Corporation",
+          "attributes": {
+            "address": "123 Business Street, Business City, BC 12345",
+            "tax_id": "12-3456789",
+            "type": "corporation"
+          }
+        },
+        {
+          "extraction_class": "service_provider",
+          "extraction_text": "TechConsult LLC",
+          "attributes": {
+            "address": "456 Service Avenue, Consult Town, CT 67890",
+            "tax_id": "98-7654321",
+            "type": "llc"
+          }
+        },
+        {
+          "extraction_class": "monthly_fee",
+          "extraction_text": "$5,000",
+          "attributes": {
+            "currency": "USD",
+            "frequency": "monthly"
+          }
+        },
+        {
+          "extraction_class": "setup_fee",
+          "extraction_text": "$2,500",
+          "attributes": {
+            "currency": "USD",
+            "type": "one-time"
+          }
+        },
+        {
+          "extraction_class": "total_contract_value",
+          "extraction_text": "$62,500",
+          "attributes": {
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "payment_terms",
+          "extraction_text": "Payment due within 30 days of invoice",
+          "attributes": {
+            "days": "30"
+          }
+        },
+        {
+          "extraction_class": "termination_clause",
+          "extraction_text": "Either party may terminate with 60 days written notice",
+          "attributes": {
+            "notice_period": "60 days",
+            "type": "bilateral"
+          }
+        },
+        {
+          "extraction_class": "governing_law",
+          "extraction_text": "State of California",
+          "attributes": {
+            "jurisdiction": "state"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 2,
+    "max_workers": 8,
+    "max_char_buffer": 1500
+  }
+}

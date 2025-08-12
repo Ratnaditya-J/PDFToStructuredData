@@ -1,0 +1,118 @@
+{
+  "name": "bank_statement",
+  "description": "Extract information from bank statements including account details, transactions, balances, and financial summary data",
+  "prompt": "Extract bank statement information including account holder details, account numbers, statement period, transactions with dates and amounts, beginning and ending balances, and fee information. Preserve exact financial data and transaction details.",
+  "examples": [
+    {
+      "text": "FIRST NATIONAL BANK\nMonthly Statement\n\nAccount Holder: John Smith\nAccount Number: ****-****-****-1234\nStatement Period: February 1, 2024 - February 29, 2024\nStatement Date: March 1, 2024\n\nACCOUNT SUMMARY:\nBeginning Balance (02/01/2024): $2,450.75\nTotal Deposits: $3,200.00\nTotal Withdrawals: $2,890.50\nTotal Fees: $15.00\nEnding Balance (02/29/2024): $2,745.25\n\nTRANSACTIONS:\n02/02/2024  Direct Deposit - Salary        +$2,500.00\n02/05/2024  ATM Withdrawal                  -$100.00\n02/08/2024  Online Transfer to Savings      -$500.00\n02/12/2024  Grocery Store Purchase          -$85.50\n02/15/2024  Mobile Deposit - Check          +$700.00\n02/18/2024  Utility Payment - Electric      -$125.75\n02/22/2024  Restaurant Purchase             -$45.25\n02/25/2024  ATM Fee                         -$3.00\n02/28/2024  Monthly Maintenance Fee         -$12.00\n\nFEES THIS PERIOD:\nATM Fee: $3.00\nMaintenance Fee: $12.00\nTotal Fees: $15.00\n\nContact Information:\nCustomer Service: 1-800-BANK-123\nOnline Banking: www.firstnationalbank.com",
+      "extractions": [
+        {
+          "extraction_class": "bank_name",
+          "extraction_text": "FIRST NATIONAL BANK",
+          "attributes": {
+            "type": "financial_institution"
+          }
+        },
+        {
+          "extraction_class": "account_holder",
+          "extraction_text": "John Smith",
+          "attributes": {
+            "type": "primary_account_holder"
+          }
+        },
+        {
+          "extraction_class": "account_number",
+          "extraction_text": "****-****-****-1234",
+          "attributes": {
+            "masked": true,
+            "last_four": "1234"
+          }
+        },
+        {
+          "extraction_class": "statement_period",
+          "extraction_text": "February 1, 2024 - February 29, 2024",
+          "attributes": {
+            "start_date": "February 1, 2024",
+            "end_date": "February 29, 2024",
+            "duration": "29 days"
+          }
+        },
+        {
+          "extraction_class": "beginning_balance",
+          "extraction_text": "$2,450.75",
+          "attributes": {
+            "currency": "USD",
+            "date": "02/01/2024"
+          }
+        },
+        {
+          "extraction_class": "ending_balance",
+          "extraction_text": "$2,745.25",
+          "attributes": {
+            "currency": "USD",
+            "date": "02/29/2024"
+          }
+        },
+        {
+          "extraction_class": "transaction",
+          "extraction_text": "Direct Deposit - Salary +$2,500.00",
+          "attributes": {
+            "date": "02/02/2024",
+            "type": "deposit",
+            "category": "salary",
+            "amount": "$2,500.00"
+          }
+        },
+        {
+          "extraction_class": "transaction",
+          "extraction_text": "ATM Withdrawal -$100.00",
+          "attributes": {
+            "date": "02/05/2024",
+            "type": "withdrawal",
+            "category": "atm",
+            "amount": "$100.00"
+          }
+        },
+        {
+          "extraction_class": "transaction",
+          "extraction_text": "Grocery Store Purchase -$85.50",
+          "attributes": {
+            "date": "02/12/2024",
+            "type": "purchase",
+            "category": "grocery",
+            "amount": "$85.50"
+          }
+        },
+        {
+          "extraction_class": "total_deposits",
+          "extraction_text": "$3,200.00",
+          "attributes": {
+            "currency": "USD",
+            "period": "monthly"
+          }
+        },
+        {
+          "extraction_class": "total_withdrawals",
+          "extraction_text": "$2,890.50",
+          "attributes": {
+            "currency": "USD",
+            "period": "monthly"
+          }
+        },
+        {
+          "extraction_class": "total_fees",
+          "extraction_text": "$15.00",
+          "attributes": {
+            "currency": "USD",
+            "period": "monthly"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 1,
+    "max_workers": 8,
+    "max_char_buffer": 1500
+  }
+}

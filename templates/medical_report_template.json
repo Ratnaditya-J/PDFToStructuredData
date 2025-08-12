@@ -1,0 +1,113 @@
+{
+  "name": "medical_report",
+  "description": "Extract information from medical reports including patient details, diagnoses, medications, test results, and treatment recommendations",
+  "prompt": "Extract medical report information including patient demographics, chief complaint, diagnoses, medications, vital signs, test results, and treatment plans. Preserve medical terminology and provide structured attributes for clinical data.",
+  "examples": [
+    {
+      "text": "MEDICAL REPORT\n\nPatient: Sarah Johnson\nDOB: 05/12/1985 (Age: 38)\nMRN: 123456789\nDate of Service: March 15, 2024\nProvider: Dr. Michael Chen, MD\nDepartment: Internal Medicine\n\nCHIEF COMPLAINT:\nFatigue and shortness of breath for 2 weeks\n\nVITAL SIGNS:\nBP: 140/90 mmHg\nHR: 95 bpm\nTemp: 98.6°F\nResp: 18/min\nO2 Sat: 96% on room air\n\nLAB RESULTS:\nHemoglobin: 8.5 g/dL (Low)\nHematocrit: 25.2% (Low)\nWBC: 6,800/μL (Normal)\nGlucose: 110 mg/dL (Normal)\nCreatinine: 0.9 mg/dL (Normal)\n\nDIAGNOSIS:\n1. Iron deficiency anemia (ICD-10: D50.9)\n2. Hypertension, uncontrolled (ICD-10: I10)\n\nMEDICATIONS PRESCRIBED:\n1. Ferrous sulfate 325mg PO BID\n2. Lisinopril 10mg PO daily\n\nTREATMENT PLAN:\n- Follow up in 4 weeks\n- Repeat CBC in 2 weeks\n- Dietary counseling for iron-rich foods\n- Monitor blood pressure at home\n\nNext Appointment: April 12, 2024",
+      "extractions": [
+        {
+          "extraction_class": "patient_name",
+          "extraction_text": "Sarah Johnson",
+          "attributes": {
+            "type": "full_name"
+          }
+        },
+        {
+          "extraction_class": "patient_dob",
+          "extraction_text": "05/12/1985",
+          "attributes": {
+            "age": "38",
+            "format": "MM/DD/YYYY"
+          }
+        },
+        {
+          "extraction_class": "medical_record_number",
+          "extraction_text": "123456789",
+          "attributes": {
+            "type": "mrn"
+          }
+        },
+        {
+          "extraction_class": "service_date",
+          "extraction_text": "March 15, 2024",
+          "attributes": {
+            "format": "full_date"
+          }
+        },
+        {
+          "extraction_class": "provider",
+          "extraction_text": "Dr. Michael Chen, MD",
+          "attributes": {
+            "department": "Internal Medicine",
+            "title": "MD"
+          }
+        },
+        {
+          "extraction_class": "chief_complaint",
+          "extraction_text": "Fatigue and shortness of breath for 2 weeks",
+          "attributes": {
+            "duration": "2 weeks"
+          }
+        },
+        {
+          "extraction_class": "vital_sign",
+          "extraction_text": "BP: 140/90 mmHg",
+          "attributes": {
+            "type": "blood_pressure",
+            "systolic": "140",
+            "diastolic": "90",
+            "unit": "mmHg"
+          }
+        },
+        {
+          "extraction_class": "lab_result",
+          "extraction_text": "Hemoglobin: 8.5 g/dL",
+          "attributes": {
+            "test": "hemoglobin",
+            "value": "8.5",
+            "unit": "g/dL",
+            "status": "Low"
+          }
+        },
+        {
+          "extraction_class": "diagnosis",
+          "extraction_text": "Iron deficiency anemia",
+          "attributes": {
+            "icd_code": "D50.9",
+            "priority": "primary"
+          }
+        },
+        {
+          "extraction_class": "medication",
+          "extraction_text": "Ferrous sulfate 325mg PO BID",
+          "attributes": {
+            "name": "Ferrous sulfate",
+            "dose": "325mg",
+            "route": "PO",
+            "frequency": "BID"
+          }
+        },
+        {
+          "extraction_class": "follow_up",
+          "extraction_text": "Follow up in 4 weeks",
+          "attributes": {
+            "timeframe": "4 weeks"
+          }
+        },
+        {
+          "extraction_class": "next_appointment",
+          "extraction_text": "April 12, 2024",
+          "attributes": {
+            "format": "full_date"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 2,
+    "max_workers": 8,
+    "max_char_buffer": 1200
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "academic_paper",
+  "description": "Extract information from academic papers and research publications including metadata, authors, abstract, methodology, results, and citations",
+  "prompt": "Extract academic paper information including title, authors with affiliations, abstract, keywords, methodology, key findings, conclusions, and citation information. Focus on research metadata and scholarly elements.",
+  "examples": [
+    {
+      "text": "Machine Learning Approaches for Climate Change Prediction: A Comprehensive Review\n\nAuthors:\nDr. Emily Rodriguez¹, Prof. James Chen², Dr. Sarah Kim¹\n¹Department of Computer Science, Stanford University, Stanford, CA\n²Climate Research Institute, MIT, Cambridge, MA\n\nAbstract:\nThis paper presents a comprehensive review of machine learning approaches applied to climate change prediction. We analyze 150 recent studies and identify key methodologies including neural networks, ensemble methods, and deep learning architectures. Our meta-analysis reveals that ensemble methods achieve the highest accuracy (R² = 0.87) for temperature prediction models.\n\nKeywords: machine learning, climate change, prediction models, ensemble methods, deep learning\n\nPublished: Journal of Climate Informatics, Vol. 15, No. 3, March 2024\nDOI: 10.1016/j.climinf.2024.03.015\nReceived: January 15, 2024\nAccepted: February 28, 2024\n\n1. INTRODUCTION\nClimate change prediction has become increasingly important for policy makers and researchers. Machine learning techniques offer promising approaches for analyzing complex climate data patterns.\n\n2. METHODOLOGY\nWe conducted a systematic literature review following PRISMA guidelines. Our search covered publications from 2020-2024 across major databases including IEEE Xplore, ACM Digital Library, and Google Scholar.\n\n3. RESULTS\nOur analysis of 150 studies shows that ensemble methods outperform individual algorithms:\n- Random Forest: Mean accuracy 82.3%\n- Neural Networks: Mean accuracy 79.1%\n- Support Vector Machines: Mean accuracy 76.8%\n\n4. CONCLUSIONS\nEnsemble methods demonstrate superior performance for climate prediction tasks. Future research should focus on hybrid approaches combining multiple ML techniques.\n\nFunding: This research was supported by NSF Grant #2024-CLI-001.\n\nReferences:\n[1] Smith, J. et al. (2023). Deep Learning for Weather Prediction. Nature Climate Change, 13(4), 234-245.\n[2] Johnson, M. (2022). Ensemble Methods in Environmental Science. Environmental Modelling & Software, 145, 105-118.",
+      "extractions": [
+        {
+          "extraction_class": "paper_title",
+          "extraction_text": "Machine Learning Approaches for Climate Change Prediction: A Comprehensive Review",
+          "attributes": {
+            "type": "review_paper"
+          }
+        },
+        {
+          "extraction_class": "author",
+          "extraction_text": "Dr. Emily Rodriguez",
+          "attributes": {
+            "affiliation": "Department of Computer Science, Stanford University",
+            "position": "first_author",
+            "title": "Dr."
+          }
+        },
+        {
+          "extraction_class": "author",
+          "extraction_text": "Prof. James Chen",
+          "attributes": {
+            "affiliation": "Climate Research Institute, MIT",
+            "position": "second_author",
+            "title": "Prof."
+          }
+        },
+        {
+          "extraction_class": "abstract",
+          "extraction_text": "This paper presents a comprehensive review of machine learning approaches applied to climate change prediction. We analyze 150 recent studies and identify key methodologies including neural networks, ensemble methods, and deep learning architectures. Our meta-analysis reveals that ensemble methods achieve the highest accuracy (R² = 0.87) for temperature prediction models.",
+          "attributes": {
+            "word_count": "53",
+            "study_count": "150"
+          }
+        },
+        {
+          "extraction_class": "keywords",
+          "extraction_text": "machine learning, climate change, prediction models, ensemble methods, deep learning",
+          "attributes": {
+            "count": "5"
+          }
+        },
+        {
+          "extraction_class": "publication_venue",
+          "extraction_text": "Journal of Climate Informatics",
+          "attributes": {
+            "volume": "15",
+            "issue": "3",
+            "date": "March 2024"
+          }
+        },
+        {
+          "extraction_class": "doi",
+          "extraction_text": "10.1016/j.climinf.2024.03.015",
+          "attributes": {
+            "type": "digital_object_identifier"
+          }
+        },
+        {
+          "extraction_class": "received_date",
+          "extraction_text": "January 15, 2024",
+          "attributes": {
+            "format": "full_date"
+          }
+        },
+        {
+          "extraction_class": "accepted_date",
+          "extraction_text": "February 28, 2024",
+          "attributes": {
+            "format": "full_date"
+          }
+        },
+        {
+          "extraction_class": "methodology",
+          "extraction_text": "systematic literature review following PRISMA guidelines",
+          "attributes": {
+            "type": "literature_review",
+            "guidelines": "PRISMA"
+          }
+        },
+        {
+          "extraction_class": "key_finding",
+          "extraction_text": "ensemble methods achieve the highest accuracy (R² = 0.87)",
+          "attributes": {
+            "metric": "R²",
+            "value": "0.87",
+            "method": "ensemble methods"
+          }
+        },
+        {
+          "extraction_class": "funding",
+          "extraction_text": "NSF Grant #2024-CLI-001",
+          "attributes": {
+            "agency": "NSF",
+            "grant_number": "2024-CLI-001"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 2,
+    "max_workers": 10,
+    "max_char_buffer": 2000
+  }
+}

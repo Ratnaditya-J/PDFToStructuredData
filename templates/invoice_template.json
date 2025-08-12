@@ -1,0 +1,69 @@
+{
+  "name": "invoice_custom",
+  "description": "Custom invoice extraction template with detailed line items",
+  "prompt": "Extract comprehensive invoice information including vendor details, customer information, line items with descriptions and amounts, tax information, and payment terms. Preserve exact text and provide meaningful attributes.",
+  "examples": [
+    {
+      "text": "INVOICE #2024-INV-001\nBill To: Acme Corporation\n123 Business St, Suite 100\nBusiness City, BC 12345\n\nFrom: TechSupply Solutions\n456 Vendor Ave\nSupply Town, ST 67890\nPhone: (555) 123-4567\nEmail: billing@techsupply.com\n\nInvoice Date: March 15, 2024\nDue Date: April 15, 2024\nTerms: Net 30\n\nDescription                 Qty    Unit Price    Amount\nLaptop Computer Dell XPS    2      $1,299.99     $2,599.98\nWireless Mouse Logitech     2      $29.99        $59.98\nSoftware License Office     1      $149.99       $149.99\n\nSubtotal:                                         $2,809.95\nTax (8.5%):                                       $238.85\nShipping:                                         $25.00\nTotal Amount Due:                                 $3,073.80",
+      "extractions": [
+        {
+          "extraction_class": "invoice_number",
+          "extraction_text": "2024-INV-001",
+          "attributes": {
+            "format": "year-prefix-number",
+            "year": "2024"
+          }
+        },
+        {
+          "extraction_class": "vendor",
+          "extraction_text": "TechSupply Solutions",
+          "attributes": {
+            "type": "company_name",
+            "contact_phone": "(555) 123-4567",
+            "contact_email": "billing@techsupply.com"
+          }
+        },
+        {
+          "extraction_class": "customer",
+          "extraction_text": "Acme Corporation",
+          "attributes": {
+            "type": "company_name",
+            "address": "123 Business St, Suite 100, Business City, BC 12345"
+          }
+        },
+        {
+          "extraction_class": "line_item",
+          "extraction_text": "Laptop Computer Dell XPS",
+          "attributes": {
+            "quantity": "2",
+            "unit_price": "$1,299.99",
+            "total_amount": "$2,599.98",
+            "category": "hardware"
+          }
+        },
+        {
+          "extraction_class": "total_amount",
+          "extraction_text": "$3,073.80",
+          "attributes": {
+            "currency": "USD",
+            "includes_tax": true,
+            "includes_shipping": true
+          }
+        },
+        {
+          "extraction_class": "payment_terms",
+          "extraction_text": "Net 30",
+          "attributes": {
+            "days": "30",
+            "type": "net_terms"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 2,
+    "max_workers": 8,
+    "max_char_buffer": 1000
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "name": "tax_document",
+  "description": "Extract information from tax documents including W-2s, 1099s, and tax returns with income, deductions, and tax liability details",
+  "prompt": "Extract tax document information including taxpayer details, income sources, tax withholdings, deductions, credits, and tax liability. Focus on financial amounts and tax-specific data elements.",
+  "examples": [
+    {
+      "text": "Form W-2 Wage and Tax Statement\nTax Year: 2023\n\nEmployee Information:\nName: Michael Davis\nSSN: ***-**-1234\nAddress: 789 Worker Lane\n         Employee City, EC 54321\n\nEmployer Information:\nName: ABC Manufacturing Corp\nEIN: 12-3456789\nAddress: 456 Business Blvd\n         Corporate City, CC 98765\n\nWage and Tax Information:\nBox 1 - Wages, tips, other compensation: $75,000.00\nBox 2 - Federal income tax withheld: $12,500.00\nBox 3 - Social security wages: $75,000.00\nBox 4 - Social security tax withheld: $4,650.00\nBox 5 - Medicare wages and tips: $75,000.00\nBox 6 - Medicare tax withheld: $1,087.50\nBox 12a - Code D: $2,500.00 (401k contributions)\nBox 16 - State wages, tips, etc.: $75,000.00\nBox 17 - State income tax: $3,750.00\nBox 18 - Local wages, tips, etc.: $75,000.00\nBox 19 - Local income tax: $750.00\nBox 20 - Locality name: Employee City\n\nThis information is important for your tax return.",
+      "extractions": [
+        {
+          "extraction_class": "tax_form_type",
+          "extraction_text": "Form W-2",
+          "attributes": {
+            "full_name": "Wage and Tax Statement",
+            "category": "employment"
+          }
+        },
+        {
+          "extraction_class": "tax_year",
+          "extraction_text": "2023",
+          "attributes": {
+            "format": "YYYY"
+          }
+        },
+        {
+          "extraction_class": "employee_name",
+          "extraction_text": "Michael Davis",
+          "attributes": {
+            "type": "taxpayer"
+          }
+        },
+        {
+          "extraction_class": "employee_ssn",
+          "extraction_text": "***-**-1234",
+          "attributes": {
+            "masked": true,
+            "last_four": "1234"
+          }
+        },
+        {
+          "extraction_class": "employer_name",
+          "extraction_text": "ABC Manufacturing Corp",
+          "attributes": {
+            "type": "corporation"
+          }
+        },
+        {
+          "extraction_class": "employer_ein",
+          "extraction_text": "12-3456789",
+          "attributes": {
+            "type": "federal_tax_id"
+          }
+        },
+        {
+          "extraction_class": "wages_total",
+          "extraction_text": "$75,000.00",
+          "attributes": {
+            "box": "1",
+            "description": "Wages, tips, other compensation",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "federal_tax_withheld",
+          "extraction_text": "$12,500.00",
+          "attributes": {
+            "box": "2",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "social_security_wages",
+          "extraction_text": "$75,000.00",
+          "attributes": {
+            "box": "3",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "social_security_tax",
+          "extraction_text": "$4,650.00",
+          "attributes": {
+            "box": "4",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "medicare_wages",
+          "extraction_text": "$75,000.00",
+          "attributes": {
+            "box": "5",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "medicare_tax",
+          "extraction_text": "$1,087.50",
+          "attributes": {
+            "box": "6",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "retirement_contribution",
+          "extraction_text": "$2,500.00",
+          "attributes": {
+            "box": "12a",
+            "code": "D",
+            "type": "401k",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "state_wages",
+          "extraction_text": "$75,000.00",
+          "attributes": {
+            "box": "16",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "state_tax_withheld",
+          "extraction_text": "$3,750.00",
+          "attributes": {
+            "box": "17",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "local_tax_withheld",
+          "extraction_text": "$750.00",
+          "attributes": {
+            "box": "19",
+            "locality": "Employee City",
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 2,
+    "max_workers": 8,
+    "max_char_buffer": 1200
+  }
+}

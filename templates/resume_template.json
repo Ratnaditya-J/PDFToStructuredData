@@ -1,0 +1,95 @@
+{
+  "name": "resume_detailed",
+  "description": "Comprehensive resume extraction template for skills, experience, education, and certifications",
+  "prompt": "Extract detailed resume information including personal details, professional summary, work experience with responsibilities, education, skills categorized by type, certifications, and achievements. Preserve exact text and provide structured attributes.",
+  "examples": [
+    {
+      "text": "SARAH JOHNSON\nSenior Data Scientist\n\nContact Information:\nEmail: sarah.johnson@email.com\nPhone: (555) 987-6543\nLinkedIn: linkedin.com/in/sarahjohnson\nLocation: San Francisco, CA\n\nPROFESSIONAL SUMMARY\nExperienced Data Scientist with 6+ years developing machine learning models and analytics solutions. Expertise in Python, R, and cloud platforms.\n\nWORK EXPERIENCE\n\nSenior Data Scientist | DataTech Inc. | Jan 2021 - Present\n• Led development of predictive models improving customer retention by 25%\n• Managed team of 4 junior data scientists\n• Implemented MLOps pipelines using AWS and Docker\n• Published 3 research papers in peer-reviewed journals\n\nData Scientist | Analytics Corp | Jun 2018 - Dec 2020\n• Built recommendation systems serving 1M+ users daily\n• Reduced model training time by 40% through optimization\n• Collaborated with product teams on A/B testing frameworks\n\nEDUCATION\nM.S. Data Science | Stanford University | 2018\nGPA: 3.9/4.0, Thesis: \"Deep Learning for Time Series Forecasting\"\n\nB.S. Computer Science | UC Berkeley | 2016\nGPA: 3.7/4.0, Magna Cum Laude\n\nSKILLS\nProgramming: Python, R, SQL, Java, Scala\nMachine Learning: TensorFlow, PyTorch, Scikit-learn, XGBoost\nCloud Platforms: AWS, GCP, Azure\nTools: Git, Docker, Kubernetes, Airflow\n\nCERTIFICATIONS\n• AWS Certified Machine Learning - Specialty (2023)\n• Google Cloud Professional Data Engineer (2022)\n• Certified Analytics Professional (CAP) (2021)",
+      "extractions": [
+        {
+          "extraction_class": "name",
+          "extraction_text": "SARAH JOHNSON",
+          "attributes": {
+            "type": "full_name",
+            "case": "uppercase"
+          }
+        },
+        {
+          "extraction_class": "title",
+          "extraction_text": "Senior Data Scientist",
+          "attributes": {
+            "level": "senior",
+            "field": "data_science"
+          }
+        },
+        {
+          "extraction_class": "contact",
+          "extraction_text": "sarah.johnson@email.com",
+          "attributes": {
+            "type": "email"
+          }
+        },
+        {
+          "extraction_class": "contact",
+          "extraction_text": "(555) 987-6543",
+          "attributes": {
+            "type": "phone"
+          }
+        },
+        {
+          "extraction_class": "experience",
+          "extraction_text": "Senior Data Scientist | DataTech Inc. | Jan 2021 - Present",
+          "attributes": {
+            "role": "Senior Data Scientist",
+            "company": "DataTech Inc.",
+            "start_date": "Jan 2021",
+            "end_date": "Present",
+            "current": true
+          }
+        },
+        {
+          "extraction_class": "achievement",
+          "extraction_text": "improving customer retention by 25%",
+          "attributes": {
+            "type": "performance_improvement",
+            "metric": "customer_retention",
+            "value": "25%"
+          }
+        },
+        {
+          "extraction_class": "education",
+          "extraction_text": "M.S. Data Science | Stanford University | 2018",
+          "attributes": {
+            "degree": "Master of Science",
+            "field": "Data Science",
+            "institution": "Stanford University",
+            "year": "2018",
+            "gpa": "3.9/4.0"
+          }
+        },
+        {
+          "extraction_class": "skill",
+          "extraction_text": "Python",
+          "attributes": {
+            "category": "programming_language",
+            "proficiency": "expert"
+          }
+        },
+        {
+          "extraction_class": "certification",
+          "extraction_text": "AWS Certified Machine Learning - Specialty",
+          "attributes": {
+            "provider": "AWS",
+            "year": "2023",
+            "specialty": "Machine Learning"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 2,
+    "max_workers": 10,
+    "max_char_buffer": 1200
+  }
+}

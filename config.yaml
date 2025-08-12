@@ -1,0 +1,49 @@
+# PDFToStructuredData Configuration File
+# This file allows you to specify default settings for automated processing
+
+# Template Configuration
+template:
+  # Built-in template name (invoice, receipt, contract, medical_report, etc.)
+  name: "invoice"
+  
+  # Or specify a custom template file path
+  # custom_template_path: "/path/to/custom_template.json"
+
+# Model Configuration
+model:
+  # LLM model to use (will auto-detect based on API key if not specified)
+  name: "gemini-2.5-flash"
+  
+  # Number of extraction passes (1-3)
+  passes: 2
+  
+  # Number of parallel workers
+  workers: 10
+
+# Output Configuration
+output:
+  # Output format: json, jsonl, csv, html, yaml, table
+  format: "json"
+  
+  # Output directory (optional, defaults to current directory)
+  # directory: "/path/to/output"
+  
+  # Generate interactive HTML visualization
+  visualize: false
+
+# Processing Configuration
+processing:
+  # Batch processing settings
+  batch_size: 5
+  
+  # Skip files that already have output files
+  skip_existing: true
+  
+  # Verbose logging
+  verbose: false
+
+# API Configuration (optional - can use environment variables instead)
+# api:
+#   google_api_key: "your-google-api-key"
+#   openai_api_key: "your-openai-api-key"
+#   langextract_api_key: "your-langextract-api-key"

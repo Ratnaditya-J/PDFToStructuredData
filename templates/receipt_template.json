@@ -1,0 +1,97 @@
+{
+  "name": "receipt",
+  "description": "Extract information from retail receipts including store details, items purchased, prices, taxes, and payment information",
+  "prompt": "Extract receipt information including store name and location, transaction details, purchased items with prices, subtotal, taxes, total amount, payment method, and transaction timestamp. Preserve exact text and provide meaningful attributes.",
+  "examples": [
+    {
+      "text": "WALMART SUPERCENTER\nStore #1234\n123 Main Street\nAnytown, ST 12345\nPhone: (555) 123-4567\n\nTransaction ID: 7890123456\nCashier: Sarah M.\nRegister: 5\nDate: 03/15/2024  Time: 2:45 PM\n\nITEMS PURCHASED:\nBananas (3 lbs)           $2.97\nMilk - Whole Gallon       $3.49\nBread - White Loaf        $1.99\nEggs - Large Dozen        $2.79\nChicken Breast (2 lbs)    $8.98\nApples - Gala (2 lbs)     $3.98\n\nSubtotal:                $24.20\nTax (6.5%):              $1.57\nTotal:                   $25.77\n\nPayment Method: VISA ****1234\nApproval Code: 567890\nThank you for shopping!",
+      "extractions": [
+        {
+          "extraction_class": "store_name",
+          "extraction_text": "WALMART SUPERCENTER",
+          "attributes": {
+            "store_number": "1234",
+            "type": "retail_chain"
+          }
+        },
+        {
+          "extraction_class": "store_location",
+          "extraction_text": "123 Main Street, Anytown, ST 12345",
+          "attributes": {
+            "phone": "(555) 123-4567"
+          }
+        },
+        {
+          "extraction_class": "transaction_id",
+          "extraction_text": "7890123456",
+          "attributes": {
+            "cashier": "Sarah M.",
+            "register": "5"
+          }
+        },
+        {
+          "extraction_class": "transaction_date",
+          "extraction_text": "03/15/2024",
+          "attributes": {
+            "time": "2:45 PM",
+            "format": "MM/DD/YYYY"
+          }
+        },
+        {
+          "extraction_class": "item",
+          "extraction_text": "Bananas (3 lbs)",
+          "attributes": {
+            "price": "$2.97",
+            "quantity": "3 lbs",
+            "category": "produce"
+          }
+        },
+        {
+          "extraction_class": "item",
+          "extraction_text": "Milk - Whole Gallon",
+          "attributes": {
+            "price": "$3.49",
+            "quantity": "1 gallon",
+            "category": "dairy"
+          }
+        },
+        {
+          "extraction_class": "subtotal",
+          "extraction_text": "$24.20",
+          "attributes": {
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "tax_amount",
+          "extraction_text": "$1.57",
+          "attributes": {
+            "rate": "6.5%",
+            "currency": "USD"
+          }
+        },
+        {
+          "extraction_class": "total_amount",
+          "extraction_text": "$25.77",
+          "attributes": {
+            "currency": "USD",
+            "includes_tax": true
+          }
+        },
+        {
+          "extraction_class": "payment_method",
+          "extraction_text": "VISA ****1234",
+          "attributes": {
+            "type": "credit_card",
+            "approval_code": "567890"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "extraction_passes": 1,
+    "max_workers": 10,
+    "max_char_buffer": 1000
+  }
+}

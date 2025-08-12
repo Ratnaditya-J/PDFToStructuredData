@@ -1,0 +1,62 @@
+{
+  "extractions": [
+    {
+      "class": "vendor",
+      "text": "TechSupply Solutions",
+      "attributes": {
+        "type": "company_name"
+      },
+      "confidence": null
+    },
+    {
+      "class": "invoice_number",
+      "text": "2024-TEST-001",
+      "attributes": {
+        "format": "alphanumeric"
+      },
+      "confidence": null
+    },
+    {
+      "class": "total_amount",
+      "text": "$3,073.80",
+      "attributes": {
+        "currency": "USD",
+        "includes_tax": true
+      },
+      "confidence": null
+    },
+    {
+      "class": "due_date",
+      "text": "April 15, 2024",
+      "attributes": {
+        "format": "full_date"
+      },
+      "confidence": null
+    },
+    {
+      "class": "line_item",
+      "text": "Laptop Computer Dell XPS",
+      "attributes": {
+        "quantity": "2",
+        "unit_price": "$1,299.99",
+        "total": "$2,599.98"
+      },
+      "confidence": null
+    },
+    {
+      "class": "tax_amount",
+      "text": "$238.85",
+      "attributes": {
+        "percentage": "8.5%"
+      },
+      "confidence": null
+    }
+  ],
+  "metadata": {
+    "model_id": "gpt-3.5-turbo",
+    "extraction_passes": 1,
+    "total_extractions": 6,
+    "text_length": 461
+  },
+  "success": true
+}

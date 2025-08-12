@@ -1,0 +1,31 @@
+INVOICE #2024-TEST-001
+
+From: TechSupply Solutions
+456 Vendor Avenue
+Supply Town, ST 67890
+Phone: (555) 123-4567
+Email: billing@techsupply.com
+
+Bill To: Acme Corporation
+123 Business Street, Suite 100
+Business City, BC 12345
+
+Invoice Date: March 15, 2024
+Due Date: April 15, 2024
+Terms: Net 30
+
+Description                 Qty    Unit Price    Amount
+Laptop Computer Dell XPS    2      $1,299.99     $2,599.98
+Wireless Mouse Logitech     2      $29.99        $59.98
+Software License Office     1      $149.99       $149.99
+
+Subtotal:                                         $2,809.95
+Tax (8.5%):                                       $238.85
+Shipping:                                         $25.00
+Total Amount Due:                                 $3,073.80
+
+Payment Instructions:
+Please remit payment within 30 days to avoid late fees.
+Wire transfer details available upon request.
+
+Thank you for your business!

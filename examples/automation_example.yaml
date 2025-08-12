@@ -1,0 +1,36 @@
+# Example configuration for fully automated PDF processing
+# This config enables zero-interaction processing when combined with environment variables
+
+# Template Configuration - specify which template to use
+template:
+  name: "invoice"  # Use built-in invoice template
+  # Alternative: use custom template
+  # custom_template_path: "/path/to/my_custom_template.json"
+
+# Model Configuration
+model:
+  name: "gemini-2.5-flash"  # Will auto-detect based on API key if not specified
+  passes: 2                 # Number of extraction passes for better accuracy
+  workers: 8                # Parallel workers for faster processing
+
+# Output Configuration
+output:
+  format: "json"            # Output format: json, jsonl, csv, html, yaml, table
+  directory: "./output"     # Output directory (optional)
+  visualize: false          # Generate HTML visualization
+
+# Processing Configuration
+processing:
+  batch_size: 10            # Process multiple files in batches
+  skip_existing: true       # Skip files that already have output
+  verbose: false            # Enable verbose logging
+
+# API Configuration (OPTIONAL - prefer environment variables)
+# It's recommended to use environment variables instead:
+# export GOOGLE_API_KEY="your-key"
+# export OPENAI_API_KEY="your-key" 
+# export LANGEXTRACT_API_KEY="your-key"
+# api:
+#   google_api_key: "your-google-api-key"
+#   openai_api_key: "your-openai-api-key"
+#   langextract_api_key: "your-langextract-api-key"
